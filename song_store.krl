@@ -15,7 +15,7 @@ ruleset song_store {
 	}
 	
 	rule collect_songs {
-		select when explicit sung song (.*) setting(in)
+		select when explicit sung song "(.*)" setting(in)
 		always{
 			set ent:songs [] if (ent:songs eq 0)
 			ent:songs.append(timestamp + " " + in);
@@ -23,7 +23,7 @@ ruleset song_store {
 	}
 	
 	rule collect_hymns {
-		select when explicit found_hymn hymn (.*) setting (in)
+		select when explicit found_hymn hymn "(.*)" setting (in)
 		always{
 			set ent:hymns [] if (ent:hymns eq 0)
 			ent:hymns.append(timestamp + " " + in);
@@ -31,7 +31,7 @@ ruleset song_store {
 	}
 	
 	rule clear_songs {
-		select when song clear
+		select when song clear_all
 		always {
 			clear ent:songs;
 			clear ent:hymns;
