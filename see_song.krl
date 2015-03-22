@@ -24,5 +24,11 @@ ruleset see_songs {
 				with hymn = song;
 		}
 	}
+	
+	rule hymn_found {
+		select when explicit found_hymn hymn (.*) setting(in)
+		send_directive("found_hymn success")
+			with hymn = in;
+	}
 }
 
