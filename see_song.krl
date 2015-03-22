@@ -8,7 +8,7 @@ ruleset see_songs {
 	}
 	
 	rule songs {
-		select when echo message input "(.*)" setting(in)
+		select when echo message input "(.*)" msg_type "song" setting(in) 
 		send_directive("sing")
 			with song = in;
 	}
