@@ -19,8 +19,6 @@ ruleset see_songs {
 	
 	rule find_hymn {
 		select when explicit sung song re/(.*god.*)/i setting(in)
-		send_directive("intermediate")
-			with song = in;
 		always {
 			raise explicit event found_hymn 
 				with hymn = in;
