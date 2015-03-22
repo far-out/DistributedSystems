@@ -18,10 +18,10 @@ ruleset see_songs {
 	}
 	
 	rule find_hymn {
-		select when explicit sung song re/.*god.*/i
+		select when explicit sung song re/(.*god.*)/i setting(in)
 		always {
 			raise explicit event found_hymn 
-				with hymn = song;
+				with hymn = in;
 		}
 	}
 	
