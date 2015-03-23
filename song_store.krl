@@ -18,7 +18,7 @@ ruleset song_store {
 		select when explicit sung song "(.*)" setting(in)
 		pre {
 			old_songs = ent:songs || [];
-			new_song = [timestamp + " " + in];
+			new_song = [time:now() + " " + in];
 			songs = old_songs.append(new_song);
 		}
 		always{
@@ -30,7 +30,7 @@ ruleset song_store {
 		select when explicit found_hymn hymn "(.*)" setting (in)
 		pre {
 			old_hymns = ent:hymns || [];
-			new_hymn = [timestamp + " " + in];
+			new_hymn = [time:now() + " " + in];
 			hymns = old_hymns.append(new_hymn);
 		}
 		always{
