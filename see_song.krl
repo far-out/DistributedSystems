@@ -25,10 +25,10 @@ ruleset see_songs {
 		}
 	}
 	
-	rule hymn_found {
-		select when explicit found_hymn hymn "(.*)" setting(in)
-		send_directive("found_hymn success")
-			with hymn = in;
-	}
+	//rule hymn_found {
+	//	select when explicit found_hymn hymn "(.*)" setting(in)
+	//	send_directive("found_hymn success")
+	//		with hymn = in;
+	//}
 }
 
