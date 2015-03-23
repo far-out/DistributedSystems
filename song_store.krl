@@ -16,17 +16,23 @@ ruleset song_store {
 	
 	rule collect_songs {
 		select when explicit sung song "(.*)" setting(in)
+		pre {
+			new_song = [timestamp + " " + in];
+			songs = ent:songs.append(new_song);
+		}
 		always{
-			set ent:songs [] if (ent:songs eq 0)
-			ent:songs.append(timestamp + " " + in);
+			set ent:songs songs;
 		}
 	}
 	
 	rule collect_hymns {
 		select when explicit found_hymn hymn "(.*)" setting (in)
+		pre {
+			new_hymn = [timestamp + " " + in];
+			hymns = ent:hymns.append(new_hymn);
+		}
 		always{
-			set ent:hymns [] if (ent:hymns eq 0)
-			ent:hymns.append(timestamp + " " + in);
+			set ent:hymns hymns;
 		}
 	}
 	
