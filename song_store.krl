@@ -29,7 +29,7 @@ ruleset song_store {
 	rule collect_hymns {
 		select when explicit found_hymn hymn "(.*)" setting (in)
 		pre {
-			old_hymns = ent:hymns || []
+			old_hymns = ent:hymns || [];
 			new_hymn = [timestamp + " " + in];
 			hymns = old_hymns.append(new_hymn);
 		}
